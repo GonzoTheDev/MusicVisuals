@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Names: Shane Buckley, Adam O'Shea, Ignas Prakapas
 
-Student Number: 
+Student Number: C20703429, C20372181, C20424992
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
