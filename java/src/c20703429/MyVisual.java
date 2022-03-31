@@ -6,6 +6,7 @@ public class MyVisual extends Visual
 {    
     int visualSwitch = 1;
     int playSong = 0;
+    int stopSong = 0;
 
     public float fCounter = 0;
     public int branchCounter = 0;
@@ -26,7 +27,10 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("powerlines.mp3");        
+        loadAudio("powerlines.wav");   
+
+        
+        colorMode(HSB);
         
     }
 
@@ -41,11 +45,19 @@ public class MyVisual extends Visual
 
     public void draw()
     {
+        
+
         if(playSong == 1){
             as.stop();
             as.trigger();
             playSong = 0;
         }
+
+        if(stopSong == 1){
+            as.stop();
+            stopSong = 0;
+        }
+
 
         try
         {
@@ -67,17 +79,23 @@ public class MyVisual extends Visual
         switch(visualSwitch){
 
             case 0 : 
+                background(0, 255, 255);
                 break;
+
             case 1 : 
-                background(50);
+                background(50, 255, 255);
                 break;
 
             case 2 : 
-                background(125);
+                background(125, 255, 255);
                 break;
 
             case 3 : 
-                background(255);
+                background(175, 255, 255);
+                break;
+
+            case 4 : 
+                background(255, 255, 255);
                 break;
             
             default:

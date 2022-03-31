@@ -23,13 +23,7 @@ public class MyVisualMenu extends Visual
 
     public void settings()
     {
-        size(200, 500);
-        
-        // Use this to make fullscreen
-        //fullScreen();
-
-        // Use this to make fullscreen and use P3D for 3D graphics
-        //fullScreen(P3D, SPAN); 
+        size(200, 400);
     }
 
     public void setup()
@@ -41,22 +35,15 @@ public class MyVisualMenu extends Visual
     {
         if (key == ' ')
         {
-            visualOption.visualSwitch = (visualOption.visualSwitch+ 1 )%4;;
+            visualOption.visualSwitch = (visualOption.visualSwitch+ 1 ) % 4;
 
         }
 
-        
     }
 
     public void draw()
     {
         background(0);
-        
-        
-
-
-        
-       
 
         for(int i = 0; i < options + 1  ; i++ ){
             fill(25);
@@ -98,7 +85,7 @@ public class MyVisualMenu extends Visual
         textSize(20);
         fill(255);
         textAlign(CENTER,CENTER);
-        text("Start Song", boxWidth/2,boxHeight/2);
+        text("Play Song", boxWidth/2,boxHeight/2);
         text("Ignas", boxWidth/2, 1*boxHeight+boxHeight/2);
         text("Shane", boxWidth/2, 2*boxHeight+boxHeight/2);
         text("Adam", boxWidth/2, 3*boxHeight+boxHeight/2);
