@@ -53,11 +53,6 @@ public class MainVisual extends Visual
             playSong = 0;
         }
 
-        if(stopSong == 1){
-            as.stop();
-            stopSong = 0;
-        }
-
 
         try
         {
