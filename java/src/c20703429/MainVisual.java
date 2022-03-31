@@ -2,7 +2,7 @@ package c20703429;
 
 import ie.tudublin.*;
 
-public class MyVisual extends Visual
+public class MainVisual extends Visual
 {    
     int visualSwitch = 1;
     int playSong = 0;

@@ -2,16 +2,16 @@ package c20703429;
 
 import ie.tudublin.*;
 
-public class MyVisualMenu extends Visual
+public class MainVisualMenu extends Visual
 {    
-    MyVisual visualOption;
+    MainVisual visualOption;
 
     
-    public MyVisualMenu(MyVisual visual){
+    public MainVisualMenu(MainVisual visual){
 
         visualOption = visual;
     }
-    public MyVisualMenu(){
+    public MainVisualMenu(){
 
     }
    
