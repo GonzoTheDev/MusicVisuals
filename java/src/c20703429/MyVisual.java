@@ -26,7 +26,7 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("INZO - Overthinker.mp3");        
+        loadAudio("powerlines.mp3");        
         
     }
 
