@@ -4,9 +4,15 @@ import ie.tudublin.*;
 
 public class MainVisual extends Visual
 {    
-    int visualSwitch = 1;
+    int visualSwitch = 0;
     int playSong = 0;
     int stopSong = 0;
+
+    // Initialize each visual object
+    AdamVisual adam;
+    IgnasVisual ignas;
+    ShaneVisual shane;
+
 
     public float fCounter = 0;
     public int branchCounter = 0;
@@ -31,6 +37,11 @@ public class MainVisual extends Visual
 
         
         colorMode(HSB);
+
+        // Create new instances of each of our 3 visual classes
+        adam = new AdamVisual(this);
+        ignas = new IgnasVisual(this);
+        shane = new ShaneVisual(this);
         
     }
 
@@ -74,23 +85,15 @@ public class MainVisual extends Visual
         switch(visualSwitch){
 
             case 0 : 
-                background(0, 255, 255);
+                ignas.render();
                 break;
 
             case 1 : 
-                background(50, 255, 255);
+                shane.render(); 
                 break;
 
             case 2 : 
-                background(125, 255, 255);
-                break;
-
-            case 3 : 
-                background(175, 255, 255);
-                break;
-
-            case 4 : 
-                background(255, 255, 255);
+                adam.render();
                 break;
             
             default:

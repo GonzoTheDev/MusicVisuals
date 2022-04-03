@@ -16,7 +16,7 @@ public class MainVisualMenu extends Visual
     }
    
 
-    public int options = 4;
+    public int options = 5;
     int boxHeight= 100;
     int boxWidth = 200;
     
