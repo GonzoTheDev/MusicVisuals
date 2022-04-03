@@ -12,6 +12,7 @@ public class MainVisual extends Visual
     AdamVisual adam;
     IgnasVisual ignas;
     ShaneVisual shane;
+    AudioBandsVisual example;
 
 
     public float fCounter = 0;
@@ -42,7 +43,7 @@ public class MainVisual extends Visual
         adam = new AdamVisual(this);
         ignas = new IgnasVisual(this);
         shane = new ShaneVisual(this);
-        
+        example = new AudioBandsVisual(this);
     }
 
     public void keyPressed()
@@ -94,6 +95,10 @@ public class MainVisual extends Visual
 
             case 2 : 
                 adam.render();
+                break;
+
+            case 3 : 
+                example.render();
                 break;
             
             default:

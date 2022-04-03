@@ -23,7 +23,7 @@ public class MainVisualMenu extends Visual
 
     public void settings()
     {
-        size(200, 400);
+        size(200, 500);
     }
 
     public void setup()
@@ -35,7 +35,7 @@ public class MainVisualMenu extends Visual
     {
         if (key == ' ')
         {
-            visualOption.visualSwitch = (visualOption.visualSwitch+ 1 ) % 4;
+            visualOption.visualSwitch = (visualOption.visualSwitch+ 1 ) % 5;
 
         }
 
@@ -89,6 +89,7 @@ public class MainVisualMenu extends Visual
         text("Ignas", boxWidth/2, 1*boxHeight+boxHeight/2);
         text("Shane", boxWidth/2, 2*boxHeight+boxHeight/2);
         text("Adam", boxWidth/2, 3*boxHeight+boxHeight/2);
+        text("Example", boxWidth/2, 4*boxHeight+boxHeight/2);
 
 
      
