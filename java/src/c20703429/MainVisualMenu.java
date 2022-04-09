@@ -2,6 +2,7 @@ package c20703429;
 
 import ie.tudublin.*;
 
+
 public class MainVisualMenu extends Visual
 {    
     MainVisual visualOption;
@@ -11,24 +12,22 @@ public class MainVisualMenu extends Visual
 
         visualOption = visual;
     }
-    public MainVisualMenu(){
-
-    }
    
 
     public int options = 5;
     int boxHeight= 100;
-    int boxWidth = 200;
+    int boxWidth = 300;
     
 
     public void settings()
     {
-        size(200, 500);
+        size(300, 500);
+
     }
 
     public void setup()
     {
-    
+        colorMode(HSB);
     }
 
     public void keyPressed()
@@ -46,24 +45,36 @@ public class MainVisualMenu extends Visual
         background(0);
 
         for(int i = 0; i < options + 1  ; i++ ){
-            fill(25);
-            stroke(100);
+
             if(i == 0){
+                fill(25,255,255);
+                stroke(100);
+            }
+            if(i == 1){
+                fill(180, 255, 255);
+                stroke(100);
+            }
+            if(i == 2){
+                fill(0, 255, 255);
+                stroke(100);
+            }
+            if(i == 3){
+                fill(90, 255, 255);
+                stroke(100);
+            }
+            if(i == 4){
                 fill(60,60,180);
+                stroke(100);
             }
 
-            if (i-1 == visualOption.visualSwitch){
-
-                fill(70);
-
-            }
+            
 
 
             rect(0, i*boxHeight,boxWidth,boxHeight);
 
             if(mouseY >= i*boxHeight && mouseY < (i+1)*boxHeight){
 
-                fill(255,20);
+                fill(255,100);
                 rect(0, i*boxHeight,boxWidth,boxHeight);
 
                 if(mousePressed){
@@ -82,7 +93,7 @@ public class MainVisualMenu extends Visual
         }
 
 
-        textSize(20);
+        textSize(40);
         fill(255);
         textAlign(CENTER,CENTER);
         text("Play Song", boxWidth/2,boxHeight/2);
