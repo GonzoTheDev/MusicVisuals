@@ -117,14 +117,14 @@ public class ShaneVisual extends Visual {
             tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
             root = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
 
-            mainVisual.fill((mainVisual.fCounter/2)%255);
-            mainVisual.stroke((mainVisual.fCounter/2)%255,255,255);
+            mainVisual.fill((mainVisual.fCounter/10)%255);
+            mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
 
     
             tree.show();
 
-            mainVisual.fill((mainVisual.fCounter/10)%255);
-            mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
+            mainVisual.fill((mainVisual.fCounter/1)%255);
+            mainVisual.stroke((mainVisual.fCounter/1)%255,255,255);
 
             root.show();
 
