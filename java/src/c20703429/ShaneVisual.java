@@ -111,7 +111,7 @@ public class ShaneVisual extends Visual {
             mainVisual.translate(mainVisual.width / 2, mainVisual.height / 2);
             mainVisual.branchCounter = 0;
         
-            mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*2));
+            mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*8));
             mainVisual.rotate( MainVisual.map((float)i, 0f, 6f, 0f, MainVisual.PI*2));
 
             tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
