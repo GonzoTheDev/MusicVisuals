@@ -21,14 +21,6 @@ class Branch {
         branch(branches);
 
     }
-    
-
-
-
-    Branch(Branch branch){
-
-        
-    } 
 
 
     void show(){
@@ -64,24 +56,14 @@ class Branch {
             branches[1] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, -angle,branchAmt-2);
         
         }
-        
-
-        
-
 
     }
 
-}// end of branch
+}
 
 public class ShaneVisual extends Visual {
 
     MainVisual mainVisual;
-    
-    float cy = 0;
-    float audioMaxHeight;
-    int audioWaveWidth = 500;
-
-    Branch root;
 
     Branch tree;
 
@@ -111,22 +93,16 @@ public class ShaneVisual extends Visual {
             mainVisual.translate(mainVisual.width / 2, mainVisual.height / 2);
             mainVisual.branchCounter = 0;
         
-            mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*8));
+            mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*2));
             mainVisual.rotate( MainVisual.map((float)i, 0f, 6f, 0f, MainVisual.PI*2));
 
-            tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
-            root = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
+            tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,18);
 
             mainVisual.fill((mainVisual.fCounter/10)%255);
             mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
 
     
             tree.show();
-
-            mainVisual.fill((mainVisual.fCounter/1)%255);
-            mainVisual.stroke((mainVisual.fCounter/1)%255,255,255);
-
-            root.show();
 
 
         }
