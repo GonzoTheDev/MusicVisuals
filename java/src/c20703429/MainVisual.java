@@ -7,6 +7,7 @@ public class MainVisual extends Visual
     int visualSwitch = 0;
     int playSong = 0;
     int stopSong = 0;
+    public float eRadius;
 
     // Initialize each visual object
     AdamVisual adam;
@@ -35,8 +36,10 @@ public class MainVisual extends Visual
                 
         // Call loadAudio to load an audio file to process 
         loadAudio("powerlines.wav");   
-
         
+        BeatDetect();
+        ellipseMode(RADIUS);
+        eRadius = 20;
         colorMode(HSB);
 
         // Create new instances of each of our 3 visual classes
