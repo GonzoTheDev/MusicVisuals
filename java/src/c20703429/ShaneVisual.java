@@ -50,7 +50,7 @@ class Branch {
             mainVisual.branchCounter++;
 
 
-            float angle = MainVisual.map(mainVisual.smothedAmplitude,0,1,3.14f/10f,3.14f/2f);
+            float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);
             
             branches[0] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, angle,branchAmt-2);
             branches[1] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, -angle,branchAmt-2);
@@ -96,7 +96,7 @@ public class ShaneVisual extends Visual {
             mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*2));
             mainVisual.rotate( MainVisual.map((float)i, 0f, 6f, 0f, MainVisual.PI*2));
 
-            tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,18);
+            tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,18);
 
             mainVisual.fill((mainVisual.fCounter/10)%255);
             mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
