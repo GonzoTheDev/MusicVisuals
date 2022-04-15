@@ -19,7 +19,7 @@ class Branch {
         this.angle = angle;
 
         branch(branches);
-
+ 
     }
 
 
