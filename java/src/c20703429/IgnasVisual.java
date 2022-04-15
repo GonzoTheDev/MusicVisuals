@@ -5,25 +5,32 @@ import ie.tudublin.*;
 
 public class IgnasVisual extends Visual {
 
-    MainVisual mainVisual;
+    MainVisual mv;
 
-    public IgnasVisual(MainVisual mainVisual) {
-        this.mainVisual = mainVisual;
+    public IgnasVisual(MainVisual mv) {
+        this.mv = mv;
     }
 
     public void render() {
-        mainVisual.background(20);
-        mainVisual.stroke(255);
-        // mainVisual.textSize(20);
-        // mainVisual.textAlign(CENTER,CENTER);
-        // mainVisual.text("Ignas' Visual", width, height);
-        //do stuff here
-        
-        mainVisual.fill(20);
-        mainVisual.circle(700, 400, 500);
+        mv.background(20);
+        mv.stroke(255);
 
-        mainVisual.stroke(20);
-        mainVisual.circle(700, 600, 500);// I wanna make this circle go down so that it shows the other circle inn a transition type thing
+        //do stuff here
+
+        mv.fill(0);
+        mv.circle(700, 400, 500);
+        
+        mv.noStroke();
+        for(int i = 0 ; i < mv.getBands().length ; i ++)
+        {
+            mv.fill(20);
+            mv.stroke(20);
+            mv.circle(700, 600, -mv.getSmoothedBands()[i] * 0.25f);
+        
+            mv.stroke(200);
+            mv.circle(700, 600, -mv.getSmoothedBands()[i] * 0.15f);
+
+        }
 
 
     }
