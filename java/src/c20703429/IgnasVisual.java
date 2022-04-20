@@ -4,8 +4,9 @@ import ie.tudublin.*;
 //size(1400, 800);
 
 public class IgnasVisual extends Visual {
-
+    
     MainVisual mv;
+    
 
     public IgnasVisual(MainVisual mv) {
         this.mv = mv;
@@ -13,25 +14,24 @@ public class IgnasVisual extends Visual {
 
     public void render() {
         mv.background(20);
-        mv.stroke(255);
-
+        mv.noStroke();
+        mv.ellipseMode(RADIUS);
+        
         //do stuff here
 
-        mv.fill(0);
-        mv.circle(700, 400, 500);
-        
-        mv.noStroke();
-        for(int i = 0 ; i < mv.getBands().length ; i ++)
-        {
-            mv.fill(20);
-            mv.stroke(20);
-            mv.circle(700, 600, -mv.getSmoothedBands()[i] * 0.25f);
-        
-            mv.stroke(200);
-            mv.circle(700, 600, -mv.getSmoothedBands()[i] * 0.15f);
+        mv.calculateAverageAmplitude(); 
+        float r = mv.getSmoothedAmplitude();
 
-        }
+        r = map(r, 0, 40, 0, 20);
 
+        int midX = mv.width/2;
+        int midY = mv.height/2;
+
+        mv.circle(midX, midY, map(r, 0, 1, 0, 1000)); //how do I make this run around in a curved ellipse
+        println(r);
+
+        //if it touches the edge thats the max it can go
+        
 
     }
 }
