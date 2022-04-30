@@ -1,3 +1,8 @@
+/*
+
+Title: Fractal Tree Audio Expansion Visual
+
+*/
 package c20703429;
 
 import ie.tudublin.*;
@@ -10,7 +15,7 @@ class Branch {
     float angle = 0;
 
     Branch[] branches;
-    
+
     Branch(MainVisual mainVisual,float start, float amplitude, float angle,int branches){
 
         this.mainVisual = mainVisual;
@@ -22,9 +27,7 @@ class Branch {
  
     }
 
-
     void show(){
-        
         
         mainVisual.rotate(this.angle);
         mainVisual.line(0, 0, 0, amplitude);
@@ -52,8 +55,8 @@ class Branch {
 
             float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);
             
-            branches[0] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, angle,branchAmt-2);
-            branches[1] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, -angle,branchAmt-2);
+            branches[0] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, angle, branchAmt-2);
+            branches[1] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, -angle, branchAmt-2);
         
         }
 
