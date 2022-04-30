@@ -4,48 +4,86 @@ import ie.tudublin.*;
 //size(1400, 800);
 
 public class IgnasVisual extends Visual {
-    
+
     MainVisual mv;
-    
+
 
     public IgnasVisual(MainVisual mv) {
         this.mv = mv;
     }
 
+    // global variables
+    int orbit = 300;
+    int angle = 270; //where the first circle starts from the bottom
+    int angle2 = 90; //where the second circle starts from the bottom
+    ddf.minim.analysis.BeatDetect beat = BeatDetect();
+
     public void render() {
+
+        //setup
         mv.background(20);
-        mv.colorMode(RGB, 255);
-        // mv.noStroke();
-        // mv.ellipseMode(RADIUS);
+        mv.colorMode(RGB, 255);      
+        mv.calculateAverageAmplitude();
         
-        //do stuff here
-
-        mv.calculateAverageAmplitude(); 
+        //initialisation 
         float r = mv.getSmoothedAmplitude();
+        float r2 = map(r, 0, 40, 50, 1000);
+        int midX = mv.width/2;
+        int midY = mv.height/2;
 
-        // r = map(r, 0, 40, 0, 20);
+        //first fill
+        mv.fill(10);
+        mv.stroke(153);
 
-        // int midX = mv.width/2;
-        // int midY = mv.height/2;
+        //this is the circle in the middle
+        mv.circle(midX, midY, map(r, 0, 1, 0, 1000)); 
 
-        // mv.circle(midX, midY, map(r, 0, 1, 0, 1000)); //how do I make this run around in a curved ellipse
-        // println(r);
-        // mv.fill(200);
-        // for (int i = 0; i < 700; i++) {
-        //     for (int j = 0; j < 1400; j++) {
-        //         mv.line(700, 400, i, j); //x1 and y1 will be static but we want x2 and y2 to extend to the edge of the application 
-        //     }
+        //beat detection
+        // if(mv.isBeat() == true)
+        // {
+
         // }
-        int i = 0;
-        int j = 0;
-        for(i = 0; i < 1400; i = i + 20) //last condition controls the amount of lines dependant on the second condition
-        {
-            for(j = 0; j < 800; j = j + 20) //last condition controls the amount of lines dependant on the second condition
-        {
-            mv.stroke(r, r, r);
-            mv.line(700, 1400, i, j); //x1 and y1 will be static but we want x2 and y2 to extend to the edge of the application 
-        }
-        }
-        println(r);
+        
+        //testing purposes
+        println(r + ", " + r2);
+
+        // circles circling
+        mv.fill(50);
+        mv.noStroke();
+            //first circle
+            mv.push();
+
+                mv.translate(700 + (cos(radians(angle)) * orbit), 400 + (sin(radians(angle)) * orbit));
+                mv.rotate(radians(angle));
+
+                mv.circle(0, 0, r2);
+
+            mv.pop();
+
+            //second circle
+            mv.push();
+
+                mv.translate(700 + (cos(radians(angle2)) * orbit), 400 + (sin(radians(angle2)) * orbit));
+                mv.rotate(radians(angle2));
+
+                mv.circle(0, 0, r2);
+
+            mv.pop();
+
+            angle += 5;
+            angle2 += 5;
+
+            if(angle > 359)
+            {
+                angle = 0;
+            }
+
+            if(angle2 > 359)
+            {
+                angle2 = 0;
+            }
+
+        //line that goes around main circle
+
     }
 }
