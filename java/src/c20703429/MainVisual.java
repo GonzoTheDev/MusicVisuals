@@ -18,7 +18,7 @@ public class MainVisual extends Visual
 
     public float fCounter = 0;
     public int branchCounter = 0;
-    public int adamOption = 0;
+    public int adamOption = 1;
 
     public void settings()
     {
@@ -57,7 +57,7 @@ public class MainVisual extends Visual
             as.stop();
             as.trigger();
         }
-        if (keyCode >= '0' && keyCode <= '2')
+        if (keyCode >= '1' && keyCode <= '3')
         {
             adamOption = keyCode - '0';
         }
