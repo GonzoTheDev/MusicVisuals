@@ -6,7 +6,7 @@ import ddf.minim.analysis.*;
 
 public abstract class Visual extends PApplet
 {
-	private int frameSize = 2048;
+	private int frameSize = 1024;
 	private int sampleRate = 44100;
 
 	private float[] bands;
@@ -150,4 +150,5 @@ public abstract class Visual extends PApplet
 		beat = new BeatDetect();
 		return beat;
 	}
+
 }
