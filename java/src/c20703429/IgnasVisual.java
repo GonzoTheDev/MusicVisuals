@@ -3,6 +3,7 @@ package c20703429;
 import ie.tudublin.*;
 //size(1400, 800);
 
+
 public class IgnasVisual extends Visual {
 
     MainVisual mv;
@@ -13,15 +14,28 @@ public class IgnasVisual extends Visual {
     }
 
     // global variables
-    int orbit = 300;
+
+    float orbit = 0;
     int angle = 270; //where the first circle starts from the bottom
     int angle2 = 90; //where the second circle starts from the bottom
-    boolean check1 = false; //this will be used to check once the second part of the song starts
+    //maybe
+    // @Override
+    // public void background(float gray) {
+    //     // TODO Auto-generated method stub
+    //     super.background(0);
+    // }
 
     public void render() {
 
         //setup
-        mv.background(20);
+        // if (key==' ') {
+        //     clear();
+        //     background(0);
+        //     float orbit = 0;
+        //     int angle = 270; //where the first circle starts from the bottom
+        //     int angle2 = 90; //where the second circle starts from the bottom
+        // }
+
         mv.colorMode(HSB);      
         mv.getFFT();        
         float[] sb = mv.getSmoothedBands();
@@ -43,71 +57,115 @@ public class IgnasVisual extends Visual {
         //basics
         int midX = mv.width/2; 
         int midY = mv.height/2;
-        int orbit = 300;
 
-        //first fill
-        mv.fill(10); 
-        mv.stroke(153);
+        if(ba > 45)
+        {
+            mv.background(20); 
+        }
+        // pulse of something for that chord
+        if(ba > 110 && lm > 300 && mi > 2500 && hi > 3000 && hh > 2000)
+        {
+            mv.fill(100, (float)0.5);
+            mv.rect(0, 0, 1400, 800);
+        }
+        else{
+            mv.noStroke();
 
-        //this is the circle in the middle, I want it to only put out the bass frequencies
-        mv.circle(midX, midY, lerp(map(ba, 0, 50, 0, 200), 100, (float) 0.5)); 
+            // circles circling
+                
+                //first circle
+                mv.push();
 
-        //this will be the second circle, I want it to be smaller and have it put out the average amplitude
-        mv.fill(100);
-        mv.circle(midX, midY, r2 * 6); 
-        
-        //testing purposes
-        // println(mv.getSmoothedBands().length);
-        println("spin: " + r + ", mapped spin: " + r2 + ", orbit: " + orbit + "\n\nBA: " + sb[0] + ", LM: " + sb[1] + ", MI: "  + sb[2] + ", HI: "  + sb[3] + ", HH: "  + sb[4] + "\n\nmBA: " + ba + ", mLM: " + lm + ", mMI: "  + mi + ", mHI: "  + hi + ", mHH: "  + hh + "\n\n");
+                //when tha bass kicks in
+                if(ba < 40)
+                {
 
-        //this is to make the circles change colour based on the music
-        mv.fill(map(lm, 0, 430, 0, 255), map(mi, 0, 3200, 0, 255), map(hi, 0, 4500, 0, 255));
+                    mv.fill(255, map(ba, 0, 150, 0, 255));
 
-        mv.noStroke();
+                    mv.translate(700 + (cos(radians(angle)) * orbit), 400 + (sin(radians(angle)) * orbit));
+                    mv.rotate(radians(angle));
 
-        // if(check1 == true)
-        // {
-        // circles circling
+                    mv.circle(0, 0, r2 * (map( 5 , 0, lerp(r, r2, 10), 1, 10)) * 3);
+                }
+
+                //when the harder bass kicks in
+                else
+                {
+                    mv.fill(map(mi, 0, 500, 100, 255), map(mi, 0, 3500, 100, 255), map(mi, 0, 5000, 100, 255));
+
+                    if(ba > 50)
+                    {
+                        mv.translate(700 + (cos(radians(angle)) * orbit), 400 + (sin(radians(angle)) * orbit));
+                        mv.rotate(radians(angle)); 
+                    }
+                    else
+                    {
+                        mv.translate(700 + (cos(radians(angle)) * orbit), 400 + (sin(radians(angle)) * orbit));
+                        mv.rotate(radians(angle));
+                    }
+
+                    mv.circle(0, 0, r2 * (map( 5 , 0, lerp(mi, hi, (float) 0.5), 1, 10)) * 3);
+                }
+
+                mv.pop();
+
+                //second circle
+                // mv.push();
+
+                //     mv.translate(700 + (cos(radians(angle2)) * orbit), 400 + (sin(radians(angle2)) * orbit));
+                //     mv.rotate(radians(angle2));
+
+                //     mv.circle(0, 0, r2 * (map( 5 , 0, lerp(r, r2, 10), 1, 10)) * 3);
+
+                // mv.pop();
+
+            //fill to make the bigger circle transparent
+            mv.fill(10, (float) 0.5); 
+            mv.stroke(153);
+
+            //this is the circle in the middle, I want it to only put out the bass frequencies
+            mv.circle(midX, midY, lerp(map(ba, 0, 50, 0, 200), 100, (float) 0.5)); 
+
+            //this will be the second circle, I want it to be smaller and have it put out the average amplitude
+            mv.fill(100);
+            mv.circle(midX, midY, r2 * 6); 
             
-            //first circle
-            mv.push();
+            //testing purposes
+            // println(mv.getSmoothedBands().length);
+            println("spin: " + r + ", mapped spin: " + r2 + ", orbit: " + orbit + "\n\nBA: " + sb[0] + ", LM: " + sb[1] + ", MI: "  + sb[2] + ", HI: "  + sb[3] + ", HH: "  + sb[4] + "\n\nmBA: " + ba + ", mLM: " + lm + ", mMI: "  + mi + ", mHI: "  + hi + ", mHH: "  + hh + "\n\n");
 
-                mv.translate(700 + (cos(radians(angle)) * orbit), 400 + (sin(radians(angle)) * orbit));
-                mv.rotate(radians(angle));
+            //this is to make the circles change colour based on the music
+            mv.fill(map(lm, 0, 430, 0, 255), map(mi, 0, 3200, 0, 255), map(hi, 0, 4500, 0, 255));
 
-                mv.circle(0, 0, r2 * (map( 5 , 0, lerp(r, r2, 10), 1, 10)) * 3);
 
-            mv.pop();
 
-            //second circle
-            mv.push();
+                angle += 5;
+                angle2 += 5;
+                if ( ba  > 4 )
+                {
+                orbit = orbit + (float) 1.115;
+                }
 
-                mv.translate(700 + (cos(radians(angle2)) * orbit), 400 + (sin(radians(angle2)) * orbit));
-                mv.rotate(radians(angle2));
+                if(orbit > 850)
+                {
+                    orbit = 50;
+                }
 
-                mv.circle(0, 0, r2 * (map( 5 , 0, lerp(r, r2, 10), 1, 10)) * 3);
+                if(angle > 359)
+                {
+                    angle = 0;
+                }
 
-            mv.pop();
+                if(angle2 > 359)
+                {
+                    angle2 = 0;
+                }
 
-            angle += 5;
-            angle2 += 5;
-
-            if(angle > 359)
-            {
-                angle = 0;
-            }
-
-            if(angle2 > 359)
-            {
-                angle2 = 0;
-            }
-    // }
-    
+        // }
         
-
-        //arc that goes around main circle
+            //arc that goes around main circle
         
-
+        }
 
 
     }
