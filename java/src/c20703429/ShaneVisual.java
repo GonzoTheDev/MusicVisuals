@@ -1,3 +1,8 @@
+/*
+
+Title: Fractal Tree Audio Expansion Visual
+
+*/
 package c20703429;
 
 import ie.tudublin.*;
@@ -10,7 +15,7 @@ class Branch {
     float angle = 0;
 
     Branch[] branches;
-    
+
     Branch(MainVisual mainVisual,float start, float amplitude, float angle,int branches){
 
         this.mainVisual = mainVisual;
@@ -22,9 +27,7 @@ class Branch {
  
     }
 
-
     void show(){
-        
         
         mainVisual.rotate(this.angle);
         mainVisual.line(0, 0, 0, amplitude);
@@ -52,8 +55,8 @@ class Branch {
 
             float angle = MainVisual.map(mainVisual.smoothedAmplitude,0,1,3.14f/10f,3.14f/2f);
             
-            branches[0] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, angle,branchAmt-2);
-            branches[1] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, -angle,branchAmt-2);
+            branches[0] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, angle, branchAmt-2);
+            branches[1] = new Branch(mainVisual, start-amplitude, amplitude/1.5f, -angle, branchAmt-2);
         
         }
 
@@ -66,6 +69,8 @@ public class ShaneVisual extends Visual {
     MainVisual mainVisual;
 
     Branch tree;
+    Branch tree2;
+    Branch root;
 
     public ShaneVisual(MainVisual mainVisual) {
         this.mainVisual = mainVisual;
@@ -96,13 +101,26 @@ public class ShaneVisual extends Visual {
             mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*2));
             mainVisual.rotate( MainVisual.map((float)i, 0f, 6f, 0f, MainVisual.PI*2));
 
-            tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,18);
+            tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,16);
+            tree2 = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,18);
+            root = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
 
             mainVisual.fill((mainVisual.fCounter/10)%255);
             mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
 
     
             tree.show();
+
+            mainVisual.fill((mainVisual.fCounter/2)%255);
+            mainVisual.stroke((mainVisual.fCounter/2)%255,255,255);
+
+            root.show();
+
+            
+            mainVisual.fill((mainVisual.fCounter/1)%255);
+            mainVisual.stroke((mainVisual.fCounter/1)%255,255,255);
+            
+            tree2.show();
 
 
         }

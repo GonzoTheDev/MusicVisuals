@@ -3,7 +3,7 @@ package c20703429;
 import ie.tudublin.*;
 
 public class MainVisual extends Visual
-{    
+{
     int visualSwitch = 0;
     int playSong = 0;
     int stopSong = 0;
@@ -23,21 +23,21 @@ public class MainVisual extends Visual
     public void settings()
     {
         size(1400, 800);
-        
+
         // Use this to make fullscreen
         //fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
-        //fullScreen(P3D, SPAN); 
+        //fullScreen(P3D, SPAN);
     }
 
     public void setup()
     {
         startMinim();
-                
-        // Call loadAudio to load an audio file to process 
-        loadAudio("powerlines.wav");   
-        
+
+        // Call loadAudio to load an audio file to process
+        loadAudio("powerlines.wav");
+
         BeatDetect();
         ellipseMode(RADIUS);
         eRadius = 20;
@@ -67,7 +67,7 @@ public class MainVisual extends Visual
 
     public void draw()
     {
-        
+
 
         if(playSong == 1){
             as.stop();
@@ -79,43 +79,43 @@ public class MainVisual extends Visual
         try
         {
             // Call this if you want to use FFT data
-            calculateFFT(); 
+            calculateFFT();
         }
         catch(VisualException e)
         {
             e.printStackTrace();
         }
         // Call this is you want to use frequency bands
-        calculateFrequencyBands(); 
+        calculateFrequencyBands();
         // Call this is you want to get the average amplitude
-        calculateAverageAmplitude();   
-        
+        calculateAverageAmplitude();
+
         // __________________________ RENDERER CODE
 
 
         switch(visualSwitch){
 
-            case 0 : 
+            case 0 :
                 ignas.render();
                 break;
 
-            case 1 : 
-                shane.render(); 
+            case 1 :
+                shane.render();
                 break;
 
-            case 2 : 
+            case 2 :
                 adam.render();
                 break;
 
-            case 3 : 
+            case 3 :
                 example.render();
                 break;
-            
+
             default:
                 background(0);
                 break;
 
         }
-   
+
     }
 }
