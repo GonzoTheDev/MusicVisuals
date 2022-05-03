@@ -69,6 +69,7 @@ public class ShaneVisual extends Visual {
     MainVisual mainVisual;
 
     Branch tree;
+    Branch root;
 
     public ShaneVisual(MainVisual mainVisual) {
         this.mainVisual = mainVisual;
@@ -100,6 +101,7 @@ public class ShaneVisual extends Visual {
             mainVisual.rotate( MainVisual.map((float)i, 0f, 6f, 0f, MainVisual.PI*2));
 
             tree = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.4f,-mainVisual.height/30f,-mainVisual.height/4f), 0,18);
+            root = new Branch(mainVisual, 0f, MainVisual.map(mainVisual.smoothedAmplitude,0,.5f,-mainVisual.height/15f,-mainVisual.height/4f), 0,20);
 
             mainVisual.fill((mainVisual.fCounter/10)%255);
             mainVisual.stroke((mainVisual.fCounter/10)%255,255,255);
@@ -107,6 +109,10 @@ public class ShaneVisual extends Visual {
     
             tree.show();
 
+            mainVisual.fill((mainVisual.fCounter/2)%255);
+            mainVisual.stroke((mainVisual.fCounter/2)%255,255,255);
+
+            root.show();
 
         }
 
