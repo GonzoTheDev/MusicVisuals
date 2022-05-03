@@ -15,7 +15,7 @@ public class AdamVisual extends Visual {
     float[] prevClrs = new float[]{0,0,0};
 
     float eRadius = 20;
-    int snareCnt = 0;  
+    int kickCount = 0;  
 
     public float[] reassignColours(float[] clrArr)
     {
@@ -39,15 +39,16 @@ public class AdamVisual extends Visual {
 
         if (mainVisual.beat.isKick())
         {
-            snareCnt++;   
+            kickCount++; 
         }
 
-        mainVisual.fill(clrArr[0], clrArr[1], clrArr[2], 30);
-        mainVisual.eRadius = 5*snareCnt;
+        mainVisual.fill(clrArr[0], clrArr[1], clrArr[2], 40);
+        mainVisual.eRadius = 5*kickCount;
             
         if (mainVisual.adamOption == 1)
         {
             mainVisual.ellipse(0, 0, mainVisual.eRadius, mainVisual.eRadius);
+            mainVisual.eRadius*=0.95;
             if ( mainVisual.eRadius > ((float)mainVisual.width)/2 ) 
             {
                 for (int i=0; i < 3; i++)
@@ -55,25 +56,26 @@ public class AdamVisual extends Visual {
                     prevClrs[i] = clrArr[i];
                 }
                 reassignColours(clrArr);
-                snareCnt = 0;
+                kickCount = 0;
                 mainVisual.eRadius = 20;
                 
             }
         }
         if (mainVisual.adamOption == 2)
         {
+            mainVisual.fill(clrArr[0], clrArr[1], clrArr[2], 25);
             mainVisual.rect(-mainVisual.width/2, -mainVisual.height/2, mainVisual.eRadius, mainVisual.eRadius);
             mainVisual.rect(mainVisual.width/2, -mainVisual.height/2, -mainVisual.eRadius, mainVisual.eRadius);
             mainVisual.rect(-mainVisual.width/2, mainVisual.height/2, mainVisual.eRadius, -mainVisual.eRadius);
             mainVisual.rect(mainVisual.width/2, mainVisual.height/2, -mainVisual.eRadius, -mainVisual.eRadius);
-            if ( mainVisual.eRadius > ((float)mainVisual.width)*1.18 ) 
+            if ( mainVisual.eRadius > ((float)mainVisual.width)*1.1 ) 
             {
                 for (int i=0; i < 3; i++)
                 {
                     prevClrs[i] = clrArr[i];
                 }
                 reassignColours(clrArr);
-                snareCnt = 0;
+                kickCount = 0;
                 mainVisual.eRadius = 20;
                 
             }
@@ -84,6 +86,7 @@ public class AdamVisual extends Visual {
             mainVisual.pushMatrix();
 
             mainVisual.rotate( MainVisual.map(mainVisual.fCounter%360, 0, 360, 0, MainVisual.PI*2));
+            
             mainVisual.triangle(0, -100, 60+(float)0.6*mainVisual.eRadius, mainVisual.eRadius, (-60-(float)0.6*mainVisual.eRadius), mainVisual.eRadius);
             mainVisual.triangle(0, 100, 60+(float)0.6*mainVisual.eRadius, mainVisual.eRadius, (-60-(float)0.6*mainVisual.eRadius), mainVisual.eRadius);
             mainVisual.triangle(-100, 0, 60+(float)0.6*mainVisual.eRadius, mainVisual.eRadius, (-60-(float)0.6*mainVisual.eRadius), mainVisual.eRadius);
@@ -104,14 +107,14 @@ public class AdamVisual extends Visual {
                     prevClrs[i] = clrArr[i];
                 }
                 reassignColours(clrArr);
-                snareCnt = 0;
+                kickCount = 0;
                 mainVisual.eRadius = 20;
             }
             
         }
         
         mainVisual.fill(prevClrs[0], prevClrs[1], prevClrs[2], 25);
-        mainVisual.rect(mainVisual.width/2, mainVisual.height/2, mainVisual.height*2, mainVisual.width*2);
+        mainVisual.rect(-(mainVisual.width/2)-2, -mainVisual.height/2, mainVisual.height*2, mainVisual.width*2);
 
         float space = mainVisual.getSmoothedAmplitude();       
         mainVisual.stroke(PApplet.map(mainVisual.getAmplitude(), 0, 1, 0, 255), 255, 255);
