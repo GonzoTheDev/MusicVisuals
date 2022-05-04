@@ -13,32 +13,39 @@ Student Number: C20703429, C20372181, C20424992
 
 # Description of the assignment
 
+## Adam
+For my portion of the assignment, I decided to create a few visuals that are each based around a shape. I wanted the shape to grow every time there is a beat in the song until it hits the borders of the screen. Once fully grown, the shape resets to its beginning size and its colour is changed. The background also changes colour with the shape but with a smaller opacity so that the colour in the shape is more prominent. In the centre of each visual is a rotating spiral of dots that grows and retracts with the amplitude analysed from the song.
+
+## Shane
+For my visual I wanted to create something to do with fractals, I was originally thinking of doing something related to the mandelbroth set but settled on a fractal tree due to it's simplicity and gave me the ability to make a very psychedelic visual by running multiple tree objects overlapping each other and changing colours at different rates. The circle of trees rotate at a set speed and expand/contract based on the volume of the bass in the music.
+
+## Ignas
+
 # Instructions
+
+## Main Menu
+On running our program, a seperate menu window will open with the following options:
+- Play Song
+- Ignas
+- Shane
+- Adam
+
+Alternatively you can press the spacebar to change between each visual.
+
+## Adam's Visual Option
+Adam's visual has further visual change options based on keypress.
+Press a corresponding number on your keyboard to change the visual.
+
+| Keycode | Visual |
+|---------|-----------|
+| '1' | Centred Circle |
+| '2' | Rectangles  |
+| '3' | Hourglass Shape |
 
 # How it works
 
 # What I am most proud of in the assignment
 
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
 
 This is code:
 
@@ -78,12 +85,5 @@ This is a youtube video:
 
 [![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
 
-This is a table:
 
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
