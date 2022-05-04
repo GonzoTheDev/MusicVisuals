@@ -19,6 +19,7 @@ public class MainVisual extends Visual
     public float fCounter = 0;
     public int branchCounter = 0;
     public int adamOption = 1;
+    public Object[] stars;
 
     public void settings()
     {

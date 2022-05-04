@@ -150,4 +150,5 @@ public abstract class Visual extends PApplet
 		beat = new BeatDetect();
 		return beat;
 	}
+
 }
