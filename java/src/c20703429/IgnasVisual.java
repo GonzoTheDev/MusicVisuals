@@ -1,6 +1,6 @@
 package c20703429;
 
-import javax.lang.model.util.ElementScanner14;
+import java.util.ArrayList;
 
 import ie.tudublin.*;
 //size(1400, 800);
@@ -15,6 +15,8 @@ public class IgnasVisual extends Visual {
 
     // global variables
     float orbit = 0;
+    float orbit2 = 0;
+    float orbit3 = 200;
     int angle = 270; //where the first circle starts from the bottom
     int angle2 = 90; //where the second circle starts from the bottom
 
@@ -22,13 +24,9 @@ public class IgnasVisual extends Visual {
     
         //initialisation
         float[] sb = mv.getSmoothedBands();
-        // Star[] stars = new Star[100];
+        ArrayList<Star> stars = new ArrayList<Star>();
 
-        // //this will fill up the array with star objects
-        // for (int i = 0; i < stars.length; i++)
-        // {
-        //     stars[i] = new Star();
-        // }
+        
         
         //moving bits
         float r = mv.getSmoothedAmplitude();
@@ -233,6 +231,42 @@ public class IgnasVisual extends Visual {
 
                     mv.pop();
 
+                    mv.push();
+
+                    //when tha small bass kicks in
+                    if(ba < 40)
+                    {
+
+                        mv.fill(255, map(ba, 0, 150, 0, 255));
+
+                        mv.translate(700 + (cos(radians(angle - 270)) * orbit2), 400 + (sin(radians(angle - 270)) * orbit2));
+                        mv.rotate(radians(angle));
+    
+                        mv.circle(0, 0, r2 * (map( 5 , 1, lerp(r, r2, 10), 1, 10)) * map(orbit2, 0, 1000, 0, 10));
+                    }
+
+                    //the big circle that matches with the bass
+                    //when the harder bass kicks in
+                    {
+                        mv.fill(map(lm, 0, 430, 0, 200), map(mi, 0, 3200, 0, 200), map(hi, 0, 4500, 0, 200));
+
+                        if(ba > 50)
+                        {
+                            mv.translate(700 + (cos(radians(angle - 270)) * orbit), 400 + (sin(radians(angle - 270)) * 2));
+                            mv.rotate(radians(angle)); 
+                        }
+                        else
+                        {
+                            mv.translate(700 + (cos(radians(angle - 270)) * orbit3), 400 + (sin(radians(angle - 270)) * orbit3));
+                            mv.rotate(radians(angle));
+
+                        }
+
+                        mv.circle(0, 0, r2 * (map( 5 , 1, lerp(mi, hi, (float) 0.5), 1, 10)) * map(orbit2, 0, 2000, 0, 2));
+                    }
+
+                    mv.pop();
+
 
 
 
@@ -285,6 +319,10 @@ public class IgnasVisual extends Visual {
             orbit = orbit + (float) 1.5;
             }
 
+
+            orbit2 = orbit2 + 2;
+
+
             if(orbit > 800) 
             {
                 orbit = 0;
@@ -300,54 +338,66 @@ public class IgnasVisual extends Visual {
                 angle2 = 0;
             }
 
-
-
             //beat detector
             mv.beat.detectMode(0);
             mv.beat.detect(mv.as.mix);
             int kickCount = 0;
 
-            if(mv.beat.isSnare() == true)
+            if(mv.beat.isKick() == true)
             {   
-                kickCount++;
-                mv.circle(500, 500, 1000); 
+                Star s = new Star(mv);
+                stars.add(s);
+            }
+
+            if(ba > 40)
+            {   
+                Star s = new Star(mv);
+                stars.add(s);
+            }
+
+            for( Star s : stars){
+                s.update();
+                mv.fill(map(lm, 0, 300, 0, 255), map(mi, 0, 3000, 0, 255), map(hi, 0, 4000, 0, 255));
+                s.render();
             }
 
             print("\n" + kickCount);
 
-                // for (int i = 0; i < stars.length; i++)
-                // {
-                //     stars[i].update();
-                //     stars[i].show();
-
-                // }
+            if(stars.size() > 20)
+            {
+                stars.remove(0);
+            }
 
         }
-    }   
+    }// end of the render   
     
 }
 
-// class Star extends Visual{
+class Star {
 
-//     MainVisual mv;
+    MainVisual mv;
+    float x, y, z;
+    Boolean isActive = true;
+    Star(MainVisual mv) {
+        this.mv = mv;
+        x = mv.random(1, mv.width);
+        y = mv.random(1, mv.height);
+        z = mv.width;
+    }
 
-//     public Star(MainVisual mv) {
-//         this.mv = mv;
-//     }
-
-//     float x, y, z;
-
-//     Star(){
-//         x = random(1, width);
-//         y = random(1, height);
-//         z = random(1, width);
-//     }
-
-//     void update(){
-
-//     }    
+    void update(){
+        if(z>0)
+        {
+            z -= 1;
+        }
+    }    
     
-//     void show(){
-//         mv.ellipse(x, y, 20, 20);
-//     }
-// }
+    void render(){
+        if(z>0)
+        {
+            mv.noStroke();
+            mv.ellipse(x, y, 20, 20);
+        }
+    }
+
+}
