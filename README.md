@@ -56,6 +56,20 @@ alone.  With each of these frequcnies in each ands, I placed them in either the 
 make an array list and fill that up with rapidly blinking stars. When it came to having the smaller circles rotate around the circle, I used sin and cos 
 functions, so they actually would zoom around the center, and their speed and range are constantly changing to add more dynamics.
 
+## Adam 
+In order to make shapes react to the beats in the song I used the isKick() method from ddf and made it increment a variable.
+![image](https://user-images.githubusercontent.com/72108585/166341497-255b9695-edcd-452b-87b4-10c219fd7372.png)
+
+The first visual is simply a circle that grows from the centre. Once its radius is more than the width of the screen it resets and reassignColours() is called to change its colour.
+![image](https://user-images.githubusercontent.com/72108585/166342865-679a8c88-6952-42f3-b0d3-fbcc6eb6e7c7.png)
+
+The second visual contains 4 rectangles that grow from the corners of the screen to the centre where the overlap to make the colour more prominent. They reset once they have fully overlapped.
+![image](https://user-images.githubusercontent.com/72108585/166343026-c397a18f-3566-4e4d-ad87-e1b10ed94eb5.png)
+
+The third visual is a series of triangles that are mirrored to create an hourglass shape. The visual is also rotates around the centre point.
+![image](https://user-images.githubusercontent.com/72108585/166343302-4bfc366a-4e81-4791-89fb-22ad05402083.png)
+
+
 # What I am most proud of in the assignment
 
 ## Ignas
@@ -67,11 +81,17 @@ to have the visuals on while operating the class, was such a delight for me when
 ## Shane
 I'm actually most proud of how comfortable I have become with using git, branches, merging, committing and collaborating. I even made a visualization of our entire repository from when it was first created by Bryan Duggan using a great little piece of software called gource. I have included a link to that video below!
 
-Project Video:
+
+## Adam
+
+I am especially proud of figuring out how to make the spiral. It was quite tricky for me as I have never had a great grasp on using trigonometric methods. I really like it because it kind of resembles the front of a big speaker which I think is very fitting for this assignment.
+
+
+# Project Video:
 
 [![YouTube](https://img.youtube.com/vi/nqSQb-zz8oU/maxresdefault.jpg)](https://youtu.be/nqSQb-zz8oU)
 
-Repository Visualization Video:
+# Repository Visualization Video:
 
 [![YouTube](https://img.youtube.com/vi/nqSQb-zz8oU/maxresdefault.jpg)](https://youtu.be/nqSQb-zz8oU)
 
