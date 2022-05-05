@@ -21,6 +21,11 @@ For my visual I wanted to create something to do with fractals, I was originally
 
 ## Ignas
 
+What I did for my project is to try make a dark, subtle formings based around the circle in the middle. What I ended up doing was having two circles in 
+the middle, outer circle for the bass and the inner circle for the amplitude at the song which was mapped to a minimum. As the song progresses more extreme 
+versions of the shapes come out, like the rotating small circles, and what I liked most which only appears when the song hits its second section is the 
+constantly incrementing orbiting circle, that looks like it is weaving in and our of the transparent outer circle. 
+
 # Instructions
 
 ## Main Menu
@@ -44,46 +49,30 @@ Press a corresponding number on your keyboard to change the visual.
 
 # How it works
 
+## Ignas
+I made the visualiser work by using the function getSmoothedBands, this measures the a band of the song that iss currently playing, which in this case is 
+11 bands. With these bands, I mapped them to respresent more of a true representation of frequencies I need. This is why I mapped 2 bands and left the rest
+alone.  With each of these frequcnies in each ands, I placed them in either the scale of a circle or the colour of a circle. Another thing I managed to do was
+make an array list and fill that up with rapidly blinking stars. When it came to having the smaller circles rotate around the circle, I used sin and cos 
+functions, so they actually would zoom around the center, and their speed and range are constantly changing to add more dynamics.
+
 # What I am most proud of in the assignment
 
+## Ignas
+I really liked the flashing circles I did for this project, this took me a lot of time and head scratching but I managed to implement a seperate class, with different 
+functions. This was big for me because I have always went with procedural programming, and having this in my project, especially with the extra requiremnts that were
+to have the visuals on while operating the class, was such a delight for me when I finished it.
 
-This is code:
 
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
+## Shane
+I'm actually most proud of how comfortable I have become with using git, branches, merging, committing and collaborating. I even made a visualization of our entire repository from when it was first created by Bryan Duggan using a great little piece of software called gource. I have included a link to that video below!
 
-So is this without specifying the language:
+Project Video:
 
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
+[![YouTube](https://img.youtube.com/vi/nqSQb-zz8oU/maxresdefault.jpg)](https://youtu.be/nqSQb-zz8oU)
 
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
+Repository Visualization Video:
 
 [![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
 
 
