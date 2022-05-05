@@ -73,6 +73,6 @@ Project Video:
 
 Repository Visualization Video:
 
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
+[![YouTube](https://img.youtube.com/vi/nqSQb-zz8oU/maxresdefault.jpg)](https://youtu.be/nqSQb-zz8oU)
 
 
