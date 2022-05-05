@@ -89,7 +89,7 @@ I am especially proud of figuring out how to make the spiral. It was quite trick
 
 # Project Video:
 
-[![YouTube](https://img.youtube.com/vi/nqSQb-zz8oU/maxresdefault.jpg)](https://youtu.be/nqSQb-zz8oU)
+[![YouTube](https://img.youtube.com/vi/8k0Myda9_gQ/maxresdefault.jpg)](https://youtu.be/8k0Myda9_gQ)
 
 # Repository Visualization Video:
 
